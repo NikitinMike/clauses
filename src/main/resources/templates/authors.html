@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+</head>
+<body>
+
+<!--<h1 th:text="${author}" >Author</h1>-->
+
+<!--<div th:include="header::header"> HEADER </div>-->
+
+<!--<a th:each ="page : ${pages}">-->
+    <!--<a th:text="${page}" th:href="@{'http://localhost:8080/articles/page?page='+${page}}">-->
+        <!--page-->
+    <!--</a>-->
+<!--</a>-->
+
+<table>
+    <tr th:each ="author : ${authors}">
+        <td>
+            <a th:text="${author.id}" th:href="@{'http://localhost:8080/author/'+${author.id}}"> </a>
+        </td>
+        <td>
+            <a th:text="${author.getName()}" th:href="@{'http://localhost:8080/author/'+${author.getId()}}"> </a>
+        </td>
+    </tr>
+</table>
+
+<!--<a href="/authors/"> back </a>-->
+
+<!--<div th:replace="footer::footer"> FOOTER </div>-->
+
+</body>
+
+</html>
