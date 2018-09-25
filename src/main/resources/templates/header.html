@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HEADER</title>
+</head>
+<body>
+<div th:fragment="header">
+    <h3>
+        <a href="#" onclick="history.back(-2);"> back </a>
+
+        <a href="http://localhost:8080"> home </a>
+        <a href="http://localhost:8080/articles/"> articles </a>
+        <a href="http://localhost:8080/authors/"> authors </a>
+        <a href="http://localhost:8080/clauses/"> clauses </a>
+        <a href="http://localhost:8080/words/"> words </a>
+
+        <!--<a href="http://localhost:8080/add/"> words </a>-->
+
+        <br/>
+        <!--<a href="http://localhost:8080/clause/parts"> clauseends </a>-->
+        <a th:each="i : ${#numbers.sequence( 1, 9)}">
+            <a th:text="${i}" th:href="@{'http://localhost:8080/add/'+${i}}">
+                page
+            </a>
+        </a>
+
+    </h3>
+</div>
+</body>
+</html>

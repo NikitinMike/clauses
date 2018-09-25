@@ -8,13 +8,14 @@
 
 <!--<h1 th:text="${author}" >Author</h1>-->
 
-<!--<div th:include="header::header"> HEADER </div>-->
+<div th:include="header::header"> HEADER </div>
 
 <!--<a th:each ="page : ${pages}">-->
-    <!--<a th:text="${page}" th:href="@{'http://localhost:8080/articles/page?page='+${page}}">-->
-        <!--page-->
-    <!--</a>-->
-<!--</a>-->
+<a th:each="page : ${#numbers.sequence( 0, pages)}">
+    <a th:text="${page}" th:href="@{'http://localhost:8080/words?page='+${page}}">
+        page
+    </a>
+</a>
 
 <table>
     <tr th:each ="word : ${words}">

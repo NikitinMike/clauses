@@ -2,6 +2,7 @@ package com.mike.clauses.controller;
 
 import com.mike.clauses.model.*;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
@@ -113,6 +114,7 @@ public class MainController {
 //            @SortDefault(sort = "number", direction = Sort.Direction.ASC)
         }) @PageableDefault(size = 9) org.springframework.data.domain.Pageable pageable)
     {
+        model.addAttribute("pages", words.count()/pageable.getPageSize());
         model.addAttribute("words", words.findAll(pageable));
         return "words";
     }
@@ -134,10 +136,12 @@ public class MainController {
         return authors.getById(id);
     }
 
-    @ResponseBody
     @RequestMapping("/add/{n}")
+//    @ResponseBody
 //    List<Clause>
-    Article add(@PathVariable Integer n){
+//    Article
+    String
+    add(@PathVariable Integer n){
         Author author=authorAdd(randomAlphanumeric(10));
         Article article=articleAdd(author,randomAlphanumeric(20).toLowerCase());
 //        System.out.println(now()+": "+article.getTitle()+" / "+article.getAuthor().getName());
@@ -146,7 +150,8 @@ public class MainController {
 //        article.getClauses().forEach(clause->System.out.println(clause));
 //        return "added:"+article.clauses+" / TITLE:"+article.title+" / AUTHOR:"+article.author.name+" "+now();
 //        return clauses.findAllByArticle(article);
-        return article;
+//        return article;
+        return "redirect:/clauses/";
     }
 
 }
