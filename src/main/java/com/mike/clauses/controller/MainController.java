@@ -2,12 +2,16 @@ package com.mike.clauses.controller;
 
 import com.mike.clauses.model.*;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.mike.clauses.repository.*;
 import com.mike.clauses.model.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Random;
 
@@ -103,8 +107,13 @@ public class MainController {
     }
 
     @RequestMapping({"words"})
-    String getWords(Model model){
-        model.addAttribute("words", words.findAllBy());
+    String getWords(Model model,
+        @SortDefault.SortDefaults({
+          @SortDefault(sort = "word", direction = Sort.Direction.ASC),
+//            @SortDefault(sort = "number", direction = Sort.Direction.ASC)
+        }) @PageableDefault(size = 9) org.springframework.data.domain.Pageable pageable)
+    {
+        model.addAttribute("words", words.findAll(pageable));
         return "words";
     }
 
