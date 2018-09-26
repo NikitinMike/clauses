@@ -17,16 +17,17 @@
     </a>
 </a>
 
-<table>
-    <tr th:each ="word : ${words}">
-        <td>
-            <a th:text="${word.id}" th:href="@{'http://localhost:8080/word/'+${word.id}}"> </a>
-        </td>
-        <td>
-            <a th:text="${word.word}" th:href="@{'http://localhost:8080/clause/'+${word.id}}"> </a>
-        </td>
-    </tr>
-</table>
+<!--<div style="margin-right: 8px;">-->
+<!--<a th:text="${word.id}" th:href="@{'http://localhost:8080/word/'+${word.id}}"> </a>-->
+<!--</div>-->
+
+<div style="display: flex; flex-direction: column; flex-wrap: wrap; max-height: 85vh;">
+    <div style="display: flex;" th:each ="word : ${words}">
+        <!--<div>-->
+        <a th:text="${word.word}" th:href="@{'http://localhost:8080/clause/'+${word.id}}"> </a>
+        <!--</div>-->
+    </div>
+</div>
 
 <!--<a href="/authors/"> back </a>-->
 

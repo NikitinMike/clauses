@@ -21,8 +21,11 @@
         <td>
             <a th:text="${clause.id}" th:href="@{'http://localhost:8080/clause/'+${clause.id}}"> </a>
         </td>
-        <td>
+        <td width="50%">
             <a th:text="${clause.text}" th:href="@{'http://localhost:8080/clause/'+${clause.id}}"> </a>
+        </td>
+        <td>
+            <b th:text="${clause.number}" > </b>
         </td>
         <td>
             <a th:text="${clause.article.getTitle()}" th:href="@{'http://localhost:8080/article/'+${clause.article.id}}"> </a>

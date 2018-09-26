@@ -27,6 +27,9 @@
         <td>
             <a th:text="${article.author.getName()}" th:href="@{'http://localhost:8080/author/'+${article.author.getId()}}"> </a>
         </td>
+        <td>
+            <b th:text="${article.count}"> </b>
+        </td>
     </tr>
 </table>
 

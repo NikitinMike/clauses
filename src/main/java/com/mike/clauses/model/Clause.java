@@ -27,8 +27,10 @@ public class Clause {
     @JsonIgnore
     private Article article;
 
+    @Column(columnDefinition="TEXT")
     private String text;
-    private Long number;
+
+    private Integer number;
 
     public Clause(Article article){
         this.article=article;
@@ -37,6 +39,8 @@ public class Clause {
 
     public Clause(Article article, String text){
         this.article=article;
+        number=article.getCount();
+        article.setCount(number+1);
         this.text=text;
     }
 

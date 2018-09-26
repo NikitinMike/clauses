@@ -34,9 +34,12 @@ public class Article {
     @OneToMany (mappedBy="article", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Clause> clauses;
 
+    private int count;
+
     public Article(Author author,String title){
         this.author=author;
         this.title=title;
+        this.count=0;
     }
 
 }
