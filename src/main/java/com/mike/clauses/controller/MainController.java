@@ -134,14 +134,17 @@ public class MainController {
 //        return article.getClauses();
     }
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping("/clause/{id}")
     String
-//    List<WordBook>
+//    List<Text>
     clause(@PathVariable Long id,Model model){
+        System.out.println(clauses.getById(id).getArticles());
         model.addAttribute("clause", clauses.getById(id).getText());
-//        return "clause";
-        return clauses.getById(id).getText();
+        model.addAttribute("words", clauses.getById(id).getWords());
+        return "clause";
+//        return clauses.getById(id).getText();
+//        return clauses.getById(id).getWords();
     }
 
     @ResponseBody

@@ -25,8 +25,11 @@ public class Text {
 
     @Order
     Long pos;
+
     @OneToOne
+    @JsonIgnore
     Clause clause;
+
     @OneToOne
     WordBook word;
 

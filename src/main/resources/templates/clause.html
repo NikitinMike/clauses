@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Words</title>
+    <title>Clause</title>
 </head>
 
 <body>
@@ -25,11 +25,12 @@
 <!--</div>-->
 
 <!--<div style="display: flex; flex-direction: column; flex-wrap: wrap; max-height: 85vh;">-->
-    <!--<div style="display: flex;" th:each ="word : ${words}">-->
-        <!--&lt;!&ndash;<div>&ndash;&gt;-->
-        <!--<a th:text="${word.word}" th:href="@{'http://localhost:8080/clause/'+${word.id}}"> </a>-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--</div>-->
+<!--<i style="display: flex;" th:each ="word : ${words}">-->
+    <span th:each ="word : ${words}">
+        <!--<div>-->
+        <a th:text="${word.word.word}" th:href="@{'http://localhost:8080/word/'+${word.word.id}}"> </a>
+        <!--</div>-->
+    </span>
 <!--</div>-->
 
 <!--<a href="/authors/"> back </a>-->
