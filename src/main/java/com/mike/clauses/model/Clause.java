@@ -18,7 +18,7 @@ public class Clause {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @JsonIgnore
+    @JsonIgnore
     private Long id;
 
     @ManyToOne (fetch=FetchType.LAZY)
@@ -30,6 +30,7 @@ public class Clause {
     @Column(columnDefinition="TEXT")
     private String text;
 
+    @JsonIgnore
     private Integer number;
 
     public Clause(Article article){

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+</head>
+<body>
+
+<h1 th:text="${title}" >Title</h1>
+<h2 th:text="${author}" >Author</h2>
+
+<div th:include="header::header"> HEADER </div>
+
+<!--<a th:each ="page : ${pages}">-->
+    <!--<a th:text="${page}" th:href="@{'http://localhost:8080/articles/page?page='+${page}}">-->
+        <!--page-->
+    <!--</a>-->
+<!--</a>-->
+
+<!--<td>-->
+<!--<a th:text="${clause.id}" th:href="@{'http://localhost:8080/clause/'+${clause.id}}"> </a>-->
+<!--</td>-->
+<!--<td>-->
+<!--<a th:text="${clause.article.getTitle()}" th:href="@{'http://localhost:8080/article/'+${clause.article.id}}"> </a>-->
+<!--</td>-->
+<!--<td>-->
+<!--<a th:text="${clause.article.getAuthor().getName()}" th:href="@{'http://localhost:8080/author/'+${clause.article.author.id}}"> </a>-->
+<!--</td>-->
+
+<table>
+    <tr th:each ="clause : ${clauses}">
+        <td width="10%">
+            <b th:text="${clause.number}" > </b>
+        </td>
+        <td >
+            <a th:text="${clause.text}" th:href="@{'http://localhost:8080/clause/'+${clause.id}}"> </a>
+        </td>
+    </tr>
+</table>
+
+<!--<a href="/authors/"> back </a>-->
+
+<!--<div th:replace="footer::footer"> FOOTER </div>-->
+
+</body>
+
+</html>

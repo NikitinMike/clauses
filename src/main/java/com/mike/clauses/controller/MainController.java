@@ -116,15 +116,32 @@ public class MainController {
         return "words";
     }
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping("/article/{id}")
-    List<Clause> article(@PathVariable Long id){
+//    List<Clause>
+    String article(@PathVariable Long id,Model model){
         Article article=articles.getById(id);
         if(article==null) return null;
 //        return clauses.findAllByArticle(articles.getById(1L));
 //        System.out.println(article.getTitle());
 //        System.out.println(article.getAuthor().getName());
-        return article.getClauses();
+
+        model.addAttribute("author", article.getAuthor().getName());
+        model.addAttribute("title", article.getTitle());
+        model.addAttribute("clauses", article.getClauses());
+        return "article";
+
+//        return article.getClauses();
+    }
+
+    @ResponseBody
+    @RequestMapping("/clause/{id}")
+    String
+//    List<WordBook>
+    clause(@PathVariable Long id,Model model){
+        model.addAttribute("clause", clauses.getById(id).getText());
+//        return "clause";
+        return clauses.getById(id).getText();
     }
 
     @ResponseBody
@@ -184,31 +201,32 @@ public class MainController {
         page=page.replaceAll("<img.+?>","");
         page=page.replaceAll("<cpan.+?>","");
         page=page.replaceAll("<div.+?>","");
+        page=page.replaceAll("<.*?>","!");
+        page=page.replaceAll("[А-ЯЁ][.]","");
+        page=page.replaceAll("160","");
+
 //        page=page.replaceAll("</.+?>","");
 //        System.out.println(page.replaceAll("[^А-ЯЁа-яё]+"," "));
-        for (String s : page.split(html)) {
-            s=s.replaceAll(".,","").trim();
+        for (String s : page.split("[.,!?()]")) {
             s=s.replaceAll("[^А-ЯЁа-яё0-9]+"," ").trim();
-//            s=s.replaceAll("160","").trim();
-            s=s.replaceAll("[0-9]","").trim();
-            if (!s.isEmpty())
-                if (s.length()>1)
-//                    if(!s.replaceAll("[0-9]","").trim().isEmpty())
-                    {
-//                        System.out.println("\n["+s+"] ");
-                        Clause clause = new Clause(article,s);
-                        clauses.save(clause);
-                        Long j=0L;
-                        for(String w : s.toLowerCase().split(" "))
-                            if(w.length()>1) {
+            if(s.replaceAll("[0-9]","").trim().isEmpty()) continue;
+            if (!s.isEmpty() && (s.length()>1))
+                {
+//                  System.out.println("\n["+s+"] ");
+//                  if(!s.replaceAll("[0-9]","").trim().isEmpty())
+                    Clause clause = new Clause(article,s);
+                    clauses.save(clause);
+                    Long j=0L;
+                    for(String w : s.replaceAll("[0-9]","").trim().toLowerCase().split(" "))
+                        if(w.length()>1) {
 //                                System.out.print(w+",");
-                                WordBook word=words.findByWord(w);
-                                if (word==null) words.save(word = new WordBook(w));
-                                Text textitem=new Text(clause,word,j++);
-                                text.save(textitem);
-                            }
-                        clauses.save(clause);
-                    }
+                            WordBook word=words.findByWord(w);
+                            if (word==null) words.save(word = new WordBook(w));
+                            Text textitem=new Text(clause,word,j++);
+                            text.save(textitem);
+                        }
+                    clauses.save(clause);
+                }
         }
 
         return "redirect:/";

@@ -20,6 +20,7 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @Order
@@ -27,7 +28,7 @@ public class Article {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn // (name="AUTHOR_ID")
-//    @JsonIgnore
+    @JsonIgnore
     private Author author;
 
     @JsonIgnore

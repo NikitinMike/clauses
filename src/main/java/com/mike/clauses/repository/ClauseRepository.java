@@ -8,4 +8,5 @@ import java.util.List;
 public interface ClauseRepository extends CrudRepository<Clause,Long>{
     List<Clause> findAllByArticle(Article article);
     List<Clause> findAllBy();
+    Clause getById(Long id);
 }

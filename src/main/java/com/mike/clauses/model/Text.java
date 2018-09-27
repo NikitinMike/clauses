@@ -1,5 +1,6 @@
 package com.mike.clauses.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ import javax.persistence.OneToOne;
 public class Text {
     @Id
     @GeneratedValue
+    @JsonIgnore
     Long id;
 
     @Order

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Words</title>
+</head>
+
+<body>
+
+<h1 th:text="${clause}" >Author</h1>
+
+<div th:include="header::header"> HEADER </div>
+
+<!--<a th:each ="page : ${pages}">-->
+<!--<a th:each="page : ${#numbers.sequence( 0, pages)}">-->
+    <!--<a th:text="${page}" th:href="@{'http://localhost:8080/words?page='+${page}}">-->
+        <!--page-->
+    <!--</a>-->
+<!--</a>-->
+
+<!--<div style="margin-right: 8px;">-->
+<!--<a th:text="${word.id}" th:href="@{'http://localhost:8080/word/'+${word.id}}"> </a>-->
+<!--</div>-->
+
+<!--<div style="display: flex; flex-direction: column; flex-wrap: wrap; max-height: 85vh;">-->
+    <!--<div style="display: flex;" th:each ="word : ${words}">-->
+        <!--&lt;!&ndash;<div>&ndash;&gt;-->
+        <!--<a th:text="${word.word}" th:href="@{'http://localhost:8080/clause/'+${word.id}}"> </a>-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<a href="/authors/"> back </a>-->
+
+<!--<div th:replace="footer::footer"> FOOTER </div>-->
+
+</body>
+
+</html>
