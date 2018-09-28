@@ -204,8 +204,11 @@ public class MainController {
         page=page.replaceAll("<img.+?>","");
         page=page.replaceAll("<cpan.+?>","");
         page=page.replaceAll("<div.+?>","");
+        page=page.replaceAll("<table.+?>.+?</table>","");
         page=page.replaceAll("<.*?>","!");
         page=page.replaceAll("[А-ЯЁ][.]","");
+        page=page.replaceAll("[0-9]+[.][0-9]+[0-9]+[.]",""); // date
+        page=page.replaceAll("[0-9]+[,.][0-9]+",""); // numeric
         page=page.replaceAll("160","");
 
 //        page=page.replaceAll("</.+?>","");
