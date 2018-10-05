@@ -1,5 +1,6 @@
 package com.mike.clauses.repository;
 
+import com.mike.clauses.controller.MainController;
 import com.mike.clauses.model.WordBook;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,4 +15,5 @@ public interface WordBookRepository extends PagingAndSortingRepository<WordBook,
     Page<WordBook> findAll(Pageable pageable);
     List<WordBook> findAllBy();
     WordBook findByWord(String word);
+    WordBook getById(Long id);
 }

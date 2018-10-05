@@ -134,6 +134,18 @@ public class MainController {
 //        return article.getClauses();
     }
 
+    @ResponseBody
+    @RequestMapping("/word/{id}")
+//    WordBook
+    List<Clause>
+    word(@PathVariable Long id,Model model){
+//        System.out.println(word.getById(id));
+//        model.addAttribute("word", word.getById(id).getWords());
+//        return "word";
+        return clauses.findAllByWordsContaining(text.getByWord(words.getById(id)));
+//        return words.getById(id);
+    }
+
 //    @ResponseBody
     @RequestMapping("/clause/{id}")
     String
@@ -210,6 +222,8 @@ public class MainController {
         page=page.replaceAll("[0-9]+[.][0-9]+[0-9]+[.]",""); // date
         page=page.replaceAll("[0-9]+[,.][0-9]+",""); // numeric
         page=page.replaceAll("160","");
+        page=page.replaceAll("править код","");
+        page=page.replaceAll("править","");
 
 //        page=page.replaceAll("</.+?>","");
 //        System.out.println(page.replaceAll("[^А-ЯЁа-яё]+"," "));
