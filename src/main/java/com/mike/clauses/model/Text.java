@@ -27,7 +27,7 @@ public class Text {
     Long pos;
 
     @OneToOne
-    @JsonIgnore
+//    @JsonIgnore
     Clause clause;
 
     @OneToOne
